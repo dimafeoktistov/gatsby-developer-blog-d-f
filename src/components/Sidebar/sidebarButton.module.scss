@@ -1,0 +1,23 @@
+@import '../../utils/scss_variables/media';
+.sidebar {
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-flow: column;
+    height: 45px;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 5px;
+    width: 40px;
+    & div {
+        width: 90%;
+        height: 4px;
+        background-color: black;
+    }
+    @media ($screenSmall) {
+        display: none;
+    }
+}

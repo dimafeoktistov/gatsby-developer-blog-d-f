@@ -1,0 +1,29 @@
+@import '../../utils/scss_variables/media';
+.sideBar {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 200;
+    background-color: white;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    padding: 0;
+}
+
+@media ($screenSmall) {
+    .SideDrawer {
+        display: none;
+    }
+}
+
+.open {
+    transform: translateX(0);
+}
+
+.close {
+    transform: translateX(100%);
+}

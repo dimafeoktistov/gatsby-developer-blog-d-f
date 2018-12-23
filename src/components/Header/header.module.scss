@@ -1,0 +1,48 @@
+@import '../../utils/scss_variables/colorVariables';
+@import '../../utils/scss_variables/media';
+.header {
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.75);
+  height: auto;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  transform-origin: top;
+  transform: scaleY(1);
+  transition: transform 0.3s ease-out;
+  width: 100%;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+  height: auto;
+  margin: 0;
+  text-decoration: none;
+  a {
+    color: $black;
+    margin-left: 20px;
+  }
+}
+
+.moving {
+  transform: scaleY(0); // *squish*
+}
+
+.widthFix {
+  display: flex;
+  justify-content: space-between;
+  @media screen and ($screenMedium) {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 1024px;
+  }
+}
+
+.desktopOnly {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}

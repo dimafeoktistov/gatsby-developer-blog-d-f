@@ -1,0 +1,31 @@
+@import '../../utils/scss_variables/colorVariables';
+$shadow: rgba(204, 204, 223, .5);
+.hero {
+    align-items: center;
+    background-image: url('../../assets/photos/background-image.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.arrow {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+}
+
+.arrowdown {
+    background-color: $white;
+    border-radius: 50%;
+    box-shadow: 0 0 18.69px 2.31px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px;
+    img {
+        margin-bottom: 0;
+    }
+}

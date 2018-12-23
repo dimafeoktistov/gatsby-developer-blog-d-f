@@ -1,20 +1,27 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["react", "jsx-a11y", "import"],
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "extends": "airbnb",
   "rules": {
-    "react/prefer-stateless-function": "off",
-    "react/prop-types": "off",
-    "react/no-danger": "off",
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "hrefLeft", "hrefRight", "to" ],
-      "aspects": [ "noHref", "invalidHref", "preferButton" ]
-    }]
-  },
-  "settings": {
-    "import/core-modules": []
-  },
-  "env": {
-    "browser": true
+    "func-names": ["error", "never"],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-restricted-syntax": ["error", "never"],
+    "import/no-named-as-default": [0, "never"],
+    "import/prefer-default-export": [0, "never"],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/require-default-props": [0, "never"],
+    "react/forbid-prop-types": [0, "never"],
+    "react/prefer-stateless-function": [0, "never"],
+    "react/prop-types": [0, "never"]
   }
 }

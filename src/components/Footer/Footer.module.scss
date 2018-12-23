@@ -1,0 +1,17 @@
+@import '../../utils/scss_variables/colorVariables';
+.copy {
+    align-items: center;
+    border-top: 1px $black solid;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+    }
+}
+
+.copyright {
+    margin-left: 2%;
+}

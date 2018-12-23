@@ -1,0 +1,18 @@
+.projectBtn {
+  text-transform: uppercase;
+  background-color: #4f4f6f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  margin-left: 10px;
+  &:hover {
+    background-color: #50f;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 100px;
+  }
+  > a {
+    color: #fff;
+    text-align: center;
+  }
+}
