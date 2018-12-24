@@ -11,7 +11,7 @@ module.exports = {
   googleAnalyticsID: '', // GA tracking ID.
   disqusShortname: 'dima-feoktistov', // Disqus shortname.
   postDefaultCategoryID: 'Tech', // Default category for posts.
-  dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
+  dateFromFormat: 'DD/MM/YYYY', // Date format used in the frontmatter.
   dateFormat: 'DD MM YYYY', // Date format for display.
   userName: 'Dima Feoktistov', // Username to display in the author segment.
   userTwitter: 'https://twitter.com/feoktistov_D_S', // Optionally renders "Follow Me" in the UserInfo segment.

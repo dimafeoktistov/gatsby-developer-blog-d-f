@@ -1,6 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { FaCalendarAlt, FaUser } from 'react-icons/fa';
 import { graphql } from 'gatsby';
+import Container from '../components/Container';
 import Layout from '../components/Layout';
 import UserInfo from '../components/UserInfo/UserInfo';
 import Disqus from '../components/Disqus/Disqus';
@@ -8,15 +10,14 @@ import PostTags from '../components/PostTags/PostTags';
 import SocialLinks from '../components/SocialLinks/SocialLinks';
 import SEO from '../components/SEO/SEO';
 import config from '../../data/SiteConfig';
-import './b16-tomorrow-dark.css';
-import './post.css';
+import styles from './post.module.scss';
 
 export default class PostTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
-    const post = postNode.frontmatter;
+    const { frontmatter: post, fields } = postNode;
     if (!post.id) {
       post.id = slug;
     }
@@ -25,21 +26,34 @@ export default class PostTemplate extends React.Component {
     }
     return (
       <Layout>
-        <div>
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
-          <SEO postPath={slug} postNode={postNode} postSEO />
-          <div>
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className="post-meta">
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
+        <Helmet>
+          <title>{`${post.title} | ${config.siteTitle}`}</title>
+        </Helmet>
+        <SEO postPath={slug} postNode={postNode} postSEO />
+        <div style={{ marginTop: '60px' }} />
+        <div className={styles.indexContainer}>
+          <Container>
+            <div className={styles.content}>
+              <h1>{post.title}</h1>
+              <div className={styles.entryMeta}>
+                <span>
+                  <FaCalendarAlt color="#444" />
+                  {post.date}
+                </span>
+                <span>
+                  <FaUser color="#444" />
+                  {fields.author}
+                </span>
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+              <div className="post-meta">
+                <PostTags tags={post.tags} />
+                <SocialLinks postPath={slug} postNode={postNode} />
+              </div>
+              <UserInfo config={config} />
+              <Disqus postNode={postNode} />
             </div>
-            <UserInfo config={config} />
-            <Disqus postNode={postNode} />
-          </div>
+          </Container>
         </div>
       </Layout>
     );
@@ -52,8 +66,9 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
-      excerpt(pruneLength: 500)
+      excerpt(pruneLength: 5000)
       frontmatter {
+        author
         title
         cover
         date
@@ -61,6 +76,7 @@ export const pageQuery = graphql`
         tags
       }
       fields {
+        author
         nextTitle
         nextSlug
         prevTitle

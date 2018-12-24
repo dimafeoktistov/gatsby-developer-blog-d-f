@@ -73,11 +73,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         createNodeField({
           node,
           name: 'date',
-          value: date.toISOString(),
+          value: date.toLocaleString(),
         });
       }
     }
     createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({
+      node,
+      name: 'author',
+      value: siteConfig.userName,
+    });
     postNodes.push(node);
   }
 };
@@ -104,7 +109,9 @@ exports.createPages = ({ graphql, actions }) => {
             allMarkdownRemark {
               edges {
                 node {
+                  excerpt(pruneLength: 5000)
                   frontmatter {
+                    author
                     tags
                     category
                   }

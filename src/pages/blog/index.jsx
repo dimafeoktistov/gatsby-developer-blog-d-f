@@ -6,6 +6,7 @@ import Layout from '../../components/Layout';
 import PostListing from '../../components/PostListing/PostListing';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/SiteConfig';
+import styles from './blog.module.scss';
 
 class Index extends React.Component {
   render() {
@@ -13,10 +14,10 @@ class Index extends React.Component {
     const postEdges = data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <div className="index-container">
+        <div className={styles.indexContainer}>
           <Helmet title={config.siteTitle} />
           <SEO />
-          <div style={{ marginTop: '80px' }} />
+          <div style={{ marginTop: '60px' }} />
           <Container>
             <PostListing postEdges={postEdges} />
           </Container>
@@ -34,16 +35,19 @@ export const pageQuery = graphql`
       edges {
         node {
           fields {
+            author
             slug
             date
           }
-          excerpt
+          excerpt(pruneLength: 50)
           timeToRead
           frontmatter {
+            author
             title
             tags
             cover
             date
+            category
           }
         }
       }

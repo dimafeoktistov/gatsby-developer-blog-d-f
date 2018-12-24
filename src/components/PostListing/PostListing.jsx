@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { Fragment } from 'react';
 import Post from './Post';
 
 class PostListing extends React.Component {
@@ -8,13 +7,15 @@ class PostListing extends React.Component {
     const { postEdges } = this.props;
     postEdges.forEach((postEdge) => {
       postList.push({
+        author: postEdge.node.fields.author,
         path: postEdge.node.fields.slug,
         tags: postEdge.node.frontmatter.tags,
         cover: postEdge.node.frontmatter.cover,
         title: postEdge.node.frontmatter.title,
-        date: postEdge.node.fields.date,
+        date: postEdge.node.frontmatter.date,
         excerpt: postEdge.node.excerpt,
         timeToRead: postEdge.node.timeToRead,
+        category: postEdge.node.frontmatter.category,
       });
     });
     return postList;
@@ -23,18 +24,13 @@ class PostListing extends React.Component {
   render() {
     const postList = this.getPostList();
     return (
-      <div>
-        {/* Your post list here. */
-        postList.map(post => (
+      <Fragment>
+        {postList.map(post => (
           <Post key={post.title} post={post} />
         ))}
-      </div>
+      </Fragment>
     );
   }
 }
 
 export default PostListing;
-
-// <Link to={post.path} key={post.title}>
-//  <h1>{post.title}</h1>
-// </Link>
