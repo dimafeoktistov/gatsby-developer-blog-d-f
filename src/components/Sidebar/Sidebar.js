@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-import Navlinks from '../NavLinks/navlinks'
-import classes from './Sidebar.module.scss'
-import Backdrop from '../UI/Backdrop/Backdrop'
+import Navlinks from '../NavLinks/navlinks';
+import classes from './Sidebar.module.scss';
+import Backdrop from '../UI/Backdrop/Backdrop';
 
-const sideBar = props => {
-  let attachedClasses = [classes.sideBar, classes.close]
-  if (props.open) {
-    attachedClasses = [classes.sideBar, classes.open]
+const sideBar = ({ open, closed }) => {
+  let attachedClasses = [classes.sideBar, classes.close];
+  if (open) {
+    attachedClasses = [classes.sideBar, classes.open];
   }
   return (
     <aside>
-      <Backdrop show={props.open} clicked={props.closed} />
+      <Backdrop show={open} clicked={closed} />
       <div className={attachedClasses.join(' ')}>
-        <Navlinks active={true} clicked={props.closed} />
+        <Navlinks clicked={closed} />
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default sideBar
+export default sideBar;

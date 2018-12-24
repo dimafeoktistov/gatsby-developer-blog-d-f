@@ -1,13 +1,13 @@
-import React from 'react'
-import Link from 'gatsby-link';
-import styles from './Author.module.scss'
-import avatar from '../../assets/photos/1.jpg'
-import Social from '../SocialNetworks/SocialNetworks'
+import React from 'react';
+import { Link } from 'gatsby';
+import styles from './Author.module.scss';
+import avatar from '../../../static/photos/1.jpg';
+import Social from '../SocialNetworks/SocialNetworks';
 
 const Author = () => {
   const mLeft = {
     marginLeft: 10,
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -18,15 +18,18 @@ const Author = () => {
         <h1>Feoktistov Dmitriy</h1>
         <p>JavaScript developer | Front-end web-development | Back-end web-development</p>
         <hr />
+        <p>I am experiencied biologist and not too experiencied web-developer yet.</p>
         <p>
-          I am experiencied biologist and not too experiencied web-developer
-          yet.
+          Check out my
+          {' '}
+          <Link to="blog">blog</Link>
+          {' '}
+          and my social networks to learn more!
         </p>
-        <p>Check out my <Link to='blog'>blog</Link> and my social networks to learn more!</p>
         <Social style={mLeft} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Author
+export default Author;

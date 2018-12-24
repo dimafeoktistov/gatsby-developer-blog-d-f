@@ -1,7 +1,7 @@
 @import '../../utils/scss_variables/media';
 .sideBar {
     position: fixed;
-    width: 280px;
+    width: 500px;
     max-width: 70%;
     height: 100%;
     right: 0;
@@ -17,6 +17,7 @@
 @media ($screenSmall) {
     .SideDrawer {
         display: none;
+        width: 280px;
     }
 }
 

@@ -1,23 +1,22 @@
-import React from 'react'
-import styles from './navlinks.module.scss'
-import Navlink from './NavLink/Navlink'
+import React from 'react';
+import styles from './navlinks.module.scss';
+import Navlink from './NavLink/Navlink';
 
-//Included props called active to indicate active page
-
-const Navlinks = props => {
-  return (
-    <ul className={styles.navigation}>
-      <Navlink to="/" clicked={props.clicked}>
+const Navlinks = ({ clicked }) => (
+  <ul className={styles.navigation}>
+    <Navlink to="/" clicked={clicked}>
         Home
-      </Navlink>
-      <Navlink to="/about" clicked={props.clicked}>
+    </Navlink>
+    <Navlink to="/about" clicked={clicked}>
         About
-      </Navlink>
-      <Navlink to="/contacts" clicked={props.clicked}>
+    </Navlink>
+    <Navlink to="/contacts" clicked={clicked}>
         Contact
-      </Navlink>
-    </ul>
-  )
-}
+    </Navlink>
+    <Navlink to="/blog">
+      Blog
+    </Navlink>
+  </ul>
+);
 
-export default Navlinks
+export default Navlinks;

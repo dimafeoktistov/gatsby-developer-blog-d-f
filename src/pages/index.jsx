@@ -1,18 +1,22 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
-import Layout from "../components/Layout";
-import config from "../../data/SiteConfig";
+import React from 'react';
+import Helmet from 'react-helmet';
+import Layout from '../components/Layout';
+import config from '../../data/SiteConfig';
+import Container from '../components/Container';
+import Hero from '../components/Hero/hero';
+import Projects from '../components/Projects/Projects';
 
 class Index extends React.Component {
   render() {
-    
     return (
       <Layout>
-        <div className="index-container">
-          <Helmet title={config.siteTitle} />
-          <h1>Hello world</h1>
-        </div>
+        <Helmet title={config.siteTitle} />
+        <main>
+          <Hero />
+          <Container>
+            <Projects />
+          </Container>
+        </main>
       </Layout>
     );
   }

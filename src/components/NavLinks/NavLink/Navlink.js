@@ -1,19 +1,23 @@
-import Link from 'gatsby-link'
-import React, { Fragment } from 'react'
-import styles from './navlink.module.scss'
+import { Link } from 'gatsby';
+import React, { Fragment } from 'react';
+import styles from './navlink.module.scss';
 
-const Navlink = props => {
-  return (
-    <Fragment>
-      <Link
-        className={props.active ? styles.active : styles.navlink}
-        to={props.to}
-        onClick={props.clicked}
-      >
-        {props.children}
-      </Link>
-    </Fragment>
-  )
-}
+const Navlink = ({
+  to, children, clicked,
+}) => (
+  <Fragment>
+    <Link
+      className={styles.navlink}
+      to={to}
+      onClick={clicked}
+      activeStyle={{
+        color: 'green',
+        borderBottom: '3px solid green',
+      }}
+    >
+      {children}
+    </Link>
+  </Fragment>
+);
 
-export default Navlink
+export default Navlink;

@@ -2,11 +2,11 @@
 $shadow: rgba(204, 204, 223, .5);
 .hero {
     align-items: center;
-    background-image: url('../../assets/photos/background-image.png');
+    background-image: url('../../../static/photos/background-image.png');
     background-size: cover;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
 }
 

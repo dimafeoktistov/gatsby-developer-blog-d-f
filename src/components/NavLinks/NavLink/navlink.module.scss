@@ -1,24 +1,17 @@
 @import '../../../utils/scss_variables/media';
 .navlink {
+    padding: 25px;
+    width: 100%;
+    border: green 1px solid;
     color: black;
-    padding: 10px 15px;
-    border: lightgrey 1px solid;
+    height: 100%;
     @media ($screenSmall) {
+        border: none;
         color: black;
         padding: 10px 15px;
-        border-radius: 50px;
-        border: none;
         &:hover {
-            background-color: red;
-            color: white;
-        }
-        &:active {
-            background: rgb(116, 233, 20);
-            color: white;
-        }
-        &.active {
-            background: rgb(116, 233, 20);
-            color: white;
+            background-color: rgb(238, 125, 125);
+            border-bottom: 3px blue solid;
         }
     }
 }
