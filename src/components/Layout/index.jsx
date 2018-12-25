@@ -9,7 +9,7 @@ import config from '../../../data/SiteConfig';
 
 class Layout extends Component {
   static propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   };
 
   state = {

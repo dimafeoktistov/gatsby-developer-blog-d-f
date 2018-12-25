@@ -50,6 +50,7 @@ export default class PostTemplate extends React.Component {
                 <PostTags tags={post.tags} />
                 <SocialLinks postPath={slug} postNode={postNode} />
               </div>
+              <hr />
               <UserInfo config={config} />
               <Disqus postNode={postNode} />
             </div>
