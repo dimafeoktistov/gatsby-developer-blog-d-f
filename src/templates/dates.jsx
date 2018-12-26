@@ -8,12 +8,12 @@ import config from '../../data/SiteConfig';
 export default class CategoryTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
-    const { category } = pageContext;
+    const { date } = pageContext;
     const postEdges = data.allMarkdownRemark.edges;
     return (
       <Layout>
         <div className="category-container">
-          <Helmet title={`Posts in category "${category}" | ${config.siteTitle}`} />
+          <Helmet title={`Posts by "${date}" | ${config.siteTitle}`} />
           <PostListing postEdges={postEdges} />
         </div>
       </Layout>
@@ -21,13 +21,12 @@ export default class CategoryTemplate extends React.Component {
   }
 }
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query DatesPage($date: String) {
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [fields___date], order: DESC }
-      filter: { frontmatter: { category: { eq: $category } } }
+      filter: { frontmatter: { date: { eq: $date } } }
     ) {
       totalCount
       edges {

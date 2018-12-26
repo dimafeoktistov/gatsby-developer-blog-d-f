@@ -1,0 +1,19 @@
+.entryMeta {
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  > span {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    > a {
+      display: flex;
+      align-items: center;
+    }
+  }
+  > span:not(:first-child) {
+    margin-left: 10px;
+  }
+}

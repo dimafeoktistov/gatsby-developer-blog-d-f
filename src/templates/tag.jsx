@@ -34,6 +34,7 @@ export const pageQuery = graphql`
           fields {
             slug
             date
+            author
           }
           excerpt
           timeToRead
@@ -41,6 +42,7 @@ export const pageQuery = graphql`
             title
             tags
             cover
+            category
             date
           }
         }

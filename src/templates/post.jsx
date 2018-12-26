@@ -1,7 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { FaCalendarAlt, FaUser } from 'react-icons/fa';
-import { graphql } from 'gatsby';
+import _ from 'lodash';
+import { graphql, Link } from 'gatsby';
+import PostMeta from '../components/PostMeta/PostMeta';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import UserInfo from '../components/UserInfo/UserInfo';
@@ -35,16 +36,7 @@ export default class PostTemplate extends React.Component {
           <Container>
             <div className={styles.content}>
               <h1>{post.title}</h1>
-              <div className={styles.entryMeta}>
-                <span>
-                  <FaCalendarAlt color="#444" />
-                  {post.date}
-                </span>
-                <span>
-                  <FaUser color="#444" />
-                  {fields.author}
-                </span>
-              </div>
+              <PostMeta post={post} author={fields.author} />
               <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
               <div className="post-meta">
                 <PostTags tags={post.tags} />
@@ -61,7 +53,6 @@ export default class PostTemplate extends React.Component {
   }
 }
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

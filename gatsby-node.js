@@ -4,6 +4,7 @@ const moment = require('moment');
 const siteConfig = require('./data/SiteConfig');
 
 const postNodes = [];
+const postsCategories = [];
 
 function addSiblingNodes(createNodeField) {
   postNodes.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
@@ -102,6 +103,8 @@ exports.createPages = ({ graphql, actions }) => {
     const postPage = path.resolve('src/templates/post.jsx');
     const tagPage = path.resolve('src/templates/tag.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
+    const datePage = path.resolve('src/templates/dates.jsx');
+    const tagsPage = path.resolve('src/templates/tags.jsx');
     resolve(
       graphql(
         `
@@ -114,9 +117,11 @@ exports.createPages = ({ graphql, actions }) => {
                     author
                     tags
                     category
+                    date
                   }
                   fields {
                     slug
+                    date
                   }
                 }
               }
@@ -132,6 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         const tagSet = new Set();
         const categorySet = new Set();
+        const datesSet = new Set();
         result.data.allMarkdownRemark.edges.forEach((edge) => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach((tag) => {
@@ -141,6 +147,10 @@ exports.createPages = ({ graphql, actions }) => {
 
           if (edge.node.frontmatter.category) {
             categorySet.add(edge.node.frontmatter.category);
+          }
+
+          if (edge.node.frontmatter.date) {
+            datesSet.add(edge.node.frontmatter.date);
           }
 
           createPage({
@@ -170,6 +180,17 @@ exports.createPages = ({ graphql, actions }) => {
             component: categoryPage,
             context: {
               category,
+            },
+          });
+        });
+
+        const datesList = Array.from(datesSet);
+        datesList.forEach((date) => {
+          createPage({
+            path: `/date/${_.kebabCase(date)}/`,
+            component: datePage,
+            context: {
+              date,
             },
           });
         });

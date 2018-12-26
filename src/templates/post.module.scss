@@ -1,48 +1,53 @@
 .content {
-    padding: 45px 50px;
-    background-color: #fff;
-    border: 1px solid #dadada;
-    & h1 {
-        color: #444;
-        font-weight: 700;
-        &:hover {
-            color: #da4453;
-        }
+  padding: 45px 50px;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  & h1 {
+    color: #444;
+    font-weight: 700;
+    &:hover {
+      color: #da4453;
     }
+  }
 }
 
 .entryMeta {
-    font-size: 14px;
-    margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  > span {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    >span {
-        display: flex;
-        align-items: center;
+    align-items: center;
+    text-decoration: none;
+    > a {
+      display: flex;
+      align-items: center;
     }
-    >span:not(:first-child) {
-        margin-left: 10px;
-    }
+  }
+  > span:not(:first-child) {
+    margin-left: 10px;
+  }
 }
 
 .btn {
-    border-radius: 5px;
-    background-color: #da4453;
-    padding: 11px 13px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.5s linear;
-    &:hover {
-        background-color: #444;
-    }
+  border-radius: 5px;
+  background-color: #da4453;
+  padding: 11px 13px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.5s linear;
+  &:hover {
+    background-color: #444;
+  }
 }
 
 .readMore {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .indexContainer {
-    background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
