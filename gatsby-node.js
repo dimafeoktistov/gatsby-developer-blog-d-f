@@ -4,7 +4,6 @@ const moment = require('moment');
 const siteConfig = require('./data/SiteConfig');
 
 const postNodes = [];
-const postsCategories = [];
 
 function addSiblingNodes(createNodeField) {
   postNodes.sort(({ frontmatter: { date: date1 } }, { frontmatter: { date: date2 } }) => {
@@ -104,7 +103,7 @@ exports.createPages = ({ graphql, actions }) => {
     const tagPage = path.resolve('src/templates/tag.jsx');
     const categoryPage = path.resolve('src/templates/category.jsx');
     const datePage = path.resolve('src/templates/dates.jsx');
-    const tagsPage = path.resolve('src/templates/tags.jsx');
+    const paginatedPages = path.resolve('src/templates/blog/index.jsx');
     resolve(
       graphql(
         `
@@ -138,6 +137,23 @@ exports.createPages = ({ graphql, actions }) => {
         const tagSet = new Set();
         const categorySet = new Set();
         const datesSet = new Set();
+
+        const posts = result.data.allMarkdownRemark.edges;
+        const postsPerPage = 2;
+        const numPages = Math.ceil(posts.length / postsPerPage);
+        Array.from({ length: numPages }).forEach((k, i) => {
+          createPage({
+            path: i === 0 ? '/blog' : `/blog/${i + 1}`,
+            component: paginatedPages,
+            context: {
+              limit: postsPerPage,
+              skip: i * postsPerPage,
+              currentPage: i + 1,
+              pageCount: numPages,
+            },
+          });
+        });
+
         result.data.allMarkdownRemark.edges.forEach((edge) => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach((tag) => {
