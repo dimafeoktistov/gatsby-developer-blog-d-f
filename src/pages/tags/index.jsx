@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Utilities
 import kebabCase from 'lodash/kebabCase';
 
-// Components
 import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
+
+import config from '../../../data/SiteConfig';
 
 const TagsPage = ({
   data: {
@@ -14,6 +14,7 @@ const TagsPage = ({
   },
 }) => (
   <div>
+    <Helmet title={`Tags | ${config.title}`} />
     <h1>Tags</h1>
     <ul>
       {group.map(tag => (

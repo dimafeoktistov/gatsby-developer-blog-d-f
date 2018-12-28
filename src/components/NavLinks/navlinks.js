@@ -10,8 +10,8 @@ const Navlinks = ({ clicked }) => (
     <Navlink to="/about" clicked={clicked}>
         About
     </Navlink>
-    <Navlink to="/contacts" clicked={clicked}>
-        Contact
+    <Navlink to="/hire-me" clicked={clicked}>
+        Hire me
     </Navlink>
     <Navlink to="/blog">
       Blog

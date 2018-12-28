@@ -4,6 +4,7 @@
   "version": "1.1.0",
   "author": "Ruben Harutyunyan <vagr9k@gmail.com>",
   "dependencies": {
+    "formik": "^1.4.1",
     "gatsby": "2.0.40",
     "gatsby-image": "2.0.19",
     "gatsby-paginate": "^1.0.16",
@@ -43,7 +44,8 @@
     "react-typography": "^0.16.18",
     "typography": "^0.16.18",
     "typography-theme-de-young": "^0.16.18",
-    "url-join": "^4.0.0"
+    "url-join": "^4.0.0",
+    "yup": "^0.26.6"
   },
   "devDependencies": {
     "cli-glob": "^0.1.0",
