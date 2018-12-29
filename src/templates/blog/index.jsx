@@ -7,16 +7,36 @@ import Layout from '../../components/Layout';
 import SEO from '../../components/SEO/SEO';
 import config from '../../../data/SiteConfig';
 import styles from './blog.module.scss';
+import BlogBtn from '../../components/UI/buttons/blogBtn';
 
 class Index extends React.Component {
+  state = {
+    selectedPage: 1,
+  };
+
+  componentDidMount() {
+    const { pathContext } = this.props;
+    const { currentPage } = pathContext;
+    this.setState({ selectedPage: currentPage });
+  }
+
+  handlePageSelect = (event) => {
+    this.setState({
+      selectedPage: Number.parseInt(event.target.value),
+    });
+  };
+
   render() {
     const { data, pathContext } = this.props;
     const { currentPage, pageCount } = pathContext;
+    const { selectedPage } = this.state;
     const postEdges = data.allMarkdownRemark.edges;
     const isFirst = currentPage === 1;
     const isLast = currentPage === pageCount;
     const prevPage = currentPage - 1 === 1 ? '/blog' : `/blog/${(currentPage - 1).toString()}`;
     const nextPage = `/blog/${(currentPage + 1).toString()}`;
+    const isInRange = selectedPage > pageCount || selectedPage < 0;
+
     return (
       <Layout>
         <div className={styles.indexContainer}>
@@ -32,32 +52,45 @@ class Index extends React.Component {
                 <PostMeta post={node.frontmatter} author={node.fields.author} />
                 <p>{node.excerpt}</p>
                 <div className={styles.readMore}>
-                  <Link className={styles.btn} to={node.fields.slug}>
-                    READ MORE
+                  <Link style={{ style: 'none' }} className={styles.link} to={node.fields.slug}>
+                    <BlogBtn>READ MORE</BlogBtn>
                   </Link>
                 </div>
               </div>
             ))}
             <div className={styles.pagination}>
-              {!isFirst && (
-                <Link to={prevPage} rel="prev">
-                  ← Previous Page
-                </Link>
-              )}
-              
               <div>
-                {Array.from({ length: pageCount }, (_, i) => (
-                  <Link key={`pagination-number${i + 1}`} to={`/blog/${i === 0 ? '' : i + 1}`}>
-                    {i + 1}
-                  </Link>
-                ))}
+                <Link to={prevPage} className={styles.link} rel="prev">
+                  <BlogBtn disabled={isFirst}>← Previous Page</BlogBtn>
+                </Link>
+
+                <Link to={nextPage} className={styles.link} rel="next">
+                  <BlogBtn disabled={isLast}>Next Page →</BlogBtn>
+                </Link>
               </div>
 
-              {!isLast && (
-                <Link to={nextPage} rel="next">
-                  Next Page →
-                </Link>
-              )}
+              <div>
+                <p>
+                  {`Page ${currentPage} out of ${pageCount}. Go to page`}
+                  <input
+                    style={{ width: 40, borderRadius: 5, marginLeft: 5 }}
+                    type="number"
+                    min="1"
+                    max={pageCount}
+                    name="page-number"
+                    placeholder={selectedPage}
+                    value={selectedPage}
+                    onChange={this.handlePageSelect}
+                  />
+                  <Link
+                    to={`/blog/${selectedPage == 1 ? '' : selectedPage}`}
+                    className={styles.link}
+                    rel="next"
+                  >
+                    <BlogBtn disabled={isInRange}>Go</BlogBtn>
+                  </Link>
+                </p>
+              </div>
             </div>
           </Container>
         </div>

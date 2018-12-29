@@ -11,6 +11,7 @@ import SocialLinks from '../components/SocialLinks/SocialLinks';
 import SEO from '../components/SEO/SEO';
 import config from '../../data/SiteConfig';
 import styles from './post.module.scss';
+import './b16-tomorrow-dark.css';
 
 export default class PostTemplate extends React.Component {
   render() {

@@ -64,10 +64,6 @@ class HireMe extends React.Component {
                   setSubmitting(false);
                   setStatus({ msg: 'Something went wrong...' });
                 }
-
-                // setTimeout(() => {
-                //   console.log(values);
-                // }, 400);
               }}
             >
               {({

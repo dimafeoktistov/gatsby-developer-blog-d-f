@@ -34,5 +34,15 @@
 
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.link {
+  &:last-child {
+    margin-left: 10px;
+  }
+  &:hover {
+    color: #fff;
+  }
 }
