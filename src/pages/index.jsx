@@ -1,5 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import config from '../../data/SiteConfig';
 import Container from '../components/Container';
@@ -8,6 +9,7 @@ import Projects from '../components/Projects/Projects';
 
 class Index extends React.Component {
   render() {
+    console.log(this.props.allFile);
     return (
       <Layout>
         <Helmet title={config.siteTitle} />
@@ -23,3 +25,15 @@ class Index extends React.Component {
 }
 
 export default Index;
+
+export const filesQuery = graphql`
+  query AllFiles {
+    allFile(filter: { extension: { eq: "pdf" } }) {
+      edges {
+        node {
+          publicURL
+        }
+      }
+    }
+  }
+`;

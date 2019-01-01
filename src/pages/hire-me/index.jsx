@@ -32,6 +32,14 @@ class HireMe extends React.Component {
     recaptcha: yup.string().required('check captcha'),
   });
 
+  componentDidMount() {
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+
   showMessage = () => {};
 
   render() {
@@ -72,24 +80,6 @@ class HireMe extends React.Component {
                 <Form className={styles.form}>
                   <div style={{ padding: 20 }}>
                     <div>
-                      <label htmlFor="recaptcha" className={styles.label}>
-                        Recaptcha Validation
-                      </label>
-                      <Recaptcha
-                        name="recaptcha"
-                        sitekey="6Ld8doUUAAAAAB01l4fIlVUp7rhLjH-w5YprQdCn"
-                        render="explicit"
-                        verifyCallback={(response) => {
-                          setFieldValue('recaptcha', response);
-                        }}
-                        onloadCallback={() => {
-                          console.log('done loading!');
-                        }}
-                      />
-                      <ErrorMessage name="recaptcha" className={styles.error} component="div" />
-                    </div>
-
-                    <div>
                       <label htmlFor="fullName" className={styles.label}>
                         Please enter your full name:
                       </label>
@@ -128,7 +118,19 @@ class HireMe extends React.Component {
                       />
                       <ErrorMessage name="message" className={styles.error} component="div" />
                     </div>
-
+                    <Recaptcha
+                      name="recaptcha"
+                      sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                      render="explicit"
+                      verifyCallback={(response) => {
+                        setFieldValue('recaptcha', response);
+                      }}
+                      onloadCallback={() => {
+                        console.log('done loading!');
+                      }}
+                    />
+                    <ErrorMessage name="recaptcha" className={styles.error} component="div" />
+                    
                     {status && status.msg && <div>{status.msg}</div>}
 
                     <div style={{ display: 'flex' }}>

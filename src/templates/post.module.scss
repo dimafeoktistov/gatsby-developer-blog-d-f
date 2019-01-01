@@ -1,5 +1,6 @@
+@import "../utils/scss_variables/media";
 .content {
-  padding: 45px 50px;
+  padding: 0 20px;
   background-color: #fff;
   border: 1px solid #dadada;
   & h1 {
@@ -8,6 +9,9 @@
     &:hover {
       color: #da4453;
     }
+  }
+  @media ($screenSmall) {
+    padding: 45px 50px;
   }
 }
 

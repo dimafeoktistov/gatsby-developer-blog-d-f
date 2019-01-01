@@ -22,8 +22,14 @@ class Index extends React.Component {
 
   handlePageSelect = (event) => {
     this.setState({
-      selectedPage: Number.parseInt(event.target.value),
+      selectedPage: event.target.value,
     });
+  };
+
+  handlePageRedirect = () => {
+    const { history } = this.props;
+    const { selectedPage } = this.state;
+    history.push(`/blog/${selectedPage == 1 ? '' : selectedPage}`);
   };
 
   render() {
@@ -35,7 +41,7 @@ class Index extends React.Component {
     const isLast = currentPage === pageCount;
     const prevPage = currentPage - 1 === 1 ? '/blog' : `/blog/${(currentPage - 1).toString()}`;
     const nextPage = `/blog/${(currentPage + 1).toString()}`;
-    const isInRange = selectedPage > pageCount || selectedPage < 0;
+    const isInRange = selectedPage > pageCount || selectedPage <= 0;
 
     return (
       <Layout>
@@ -59,7 +65,7 @@ class Index extends React.Component {
               </div>
             ))}
             <div className={styles.pagination}>
-              <div>
+              <div style={{ marginBottom: 10 }}>
                 <Link to={prevPage} className={styles.link} rel="prev">
                   <BlogBtn disabled={isFirst}>← Previous Page</BlogBtn>
                 </Link>
@@ -70,7 +76,7 @@ class Index extends React.Component {
               </div>
 
               <div>
-                <p>
+                <form>
                   {`Page ${currentPage} out of ${pageCount}. Go to page`}
                   <input
                     style={{ width: 40, borderRadius: 5, marginLeft: 5 }}
@@ -82,14 +88,16 @@ class Index extends React.Component {
                     value={selectedPage}
                     onChange={this.handlePageSelect}
                   />
-                  <Link
+                  {/* <Link
                     to={`/blog/${selectedPage == 1 ? '' : selectedPage}`}
                     className={styles.link}
                     rel="next"
-                  >
-                    <BlogBtn disabled={isInRange}>Go</BlogBtn>
-                  </Link>
-                </p>
+                  > */}
+                    <BlogBtn type="submit" disabled={isInRange} onSubmit={this.handlePageRedirect}>
+                      Go
+                    </BlogBtn>
+                  {/* </Link> */}
+                </form>
               </div>
             </div>
           </Container>

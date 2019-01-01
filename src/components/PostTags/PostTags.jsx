@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { Link } from 'gatsby';
 import styles from './posttags.module.scss';
+import Tag from '../Tag';
 
 class PostTags extends Component {
   render() {
@@ -10,9 +11,7 @@ class PostTags extends Component {
       <div className="post-tag-container">
         {tags
           && tags.map(tag => (
-            <Link key={tag} style={{ textDecoration: 'none' }} to={`/tags/${_.kebabCase(tag)}`}>
-              <button type="button" className={styles.tag}>{tag}</button>
-            </Link>
+            <Tag key={tag} tag={tag} />
           ))}
       </div>
     );

@@ -1,9 +1,10 @@
+@import "../../utils/scss_variables/media";
 .indexContainer {
   background-color: #f2f2f2;
 }
 
 .content {
-  padding: 45px 50px;
+  padding: 0 20px;
   background-color: #fff;
   border: 1px solid #dadada;
   & h1 {
@@ -12,6 +13,9 @@
     &:hover {
       color: #da4453;
     }
+  }
+  @media ($screenSmall) {
+    padding: 45px 50px;
   }
 }
 
@@ -34,8 +38,18 @@
 
 .pagination {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
+  @media ($screenSmall) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  p {
+    margin-bottom: 5px;
+  }
 }
 
 .link {

@@ -8,8 +8,13 @@
   border-radius: 3px;
   transition: all 0.3s linear;
   margin-left: 10px;
+  width: auto;
   &:hover {
     background-color: #444;
     color: #fff;
   }
+}
+
+.link:hover {
+  color: #fff;
 }
