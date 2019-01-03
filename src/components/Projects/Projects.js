@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styles from './Projects.module.scss';
-import guideToTomskPng from '../../../static/photos/guide-to-tomsk.png';
-import loanCalculator from '../../../static/photos/loan-calculator.png';
-import arcadeGameClone from '../../../static/photos/arcade.png';
 
-const Projects = () => (
+const Projects = ({ images }) => (
   <section className={styles.featured} id="featured">
     <div className={styles.featuredContent}>
       <span>featured content</span>
@@ -14,7 +12,10 @@ const Projects = () => (
     </div>
     <div className={styles.projects}>
       <div className={styles.project}>
-        <img src={guideToTomskPng} alt="guide to Tomsk city" />
+        <div style={{ width: '100%', height: 'auto' }}>
+          <Img fluid={images.tomskMap.childImageSharp.fluid} />
+        </div>
+        {/* <img src={guideToTomskPng} alt="guide to Tomsk city" /> */}
         <div className={styles.description}>
           <h3>Guide to Tomsk city</h3>
           <p>
@@ -37,7 +38,10 @@ const Projects = () => (
         </div>
       </div>
       <div className={styles.project}>
-        <img src={loanCalculator} alt="screenshot of loan calculator project" />
+        <div style={{ width: '100%', height: 'auto' }}>
+          <Img fluid={images.loan.childImageSharp.fluid} />
+        </div>
+        {/* <img src={loanCalculator} alt="screenshot of loan calculator project" /> */}
         <h3>Loan calculator</h3>
         <p>Calculator of loan percentages. Vanilla javascript and Bootstrap.</p>
         <p>
@@ -52,7 +56,10 @@ const Projects = () => (
         </p>
       </div>
       <div className={styles.project}>
-        <img src={arcadeGameClone} alt="clone of classic arcade game" />
+        <div style={{ width: '100%', height: 'auto' }}>
+          <Img fluid={images.arcade.childImageSharp.fluid} />
+        </div>
+        {/* <img src={arcadeGameClone} alt="clone of classic arcade game" /> */}
         <h3>Clone of classic arcade game</h3>
         <p>Made on canvas, Vanilla javascript, Bootstrap.</p>
         <p>

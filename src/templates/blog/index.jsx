@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { graphql, Link, navigateTo } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
 import PostMeta from '../../components/PostMeta/PostMeta';
 import Container from '../../components/Container';
 import Layout from '../../components/Layout';
@@ -26,12 +27,6 @@ class Index extends React.Component {
     });
   };
 
-  handlePageRedirect = (event) => {
-    event.preventDefault();
-    const { selectedPage } = this.state;
-    // navigateTo(`/blog/${selectedPage == 1 ? '' : selectedPage}`);
-  };
-
   render() {
     const { data, pathContext } = this.props;
     const { currentPage, pageCount } = pathContext;
@@ -51,18 +46,25 @@ class Index extends React.Component {
           <div style={{ marginTop: '60px' }} />
           <Container>
             {postEdges.map(({ node }) => (
-              <div key={node.id} className={styles.content}>
-                <Link to={node.fields.slug}>
-                  <h1>{node.frontmatter.title}</h1>
-                </Link>
-                <PostMeta post={node.frontmatter} author={node.fields.author} />
-                <p>{node.excerpt}</p>
-                <div className={styles.readMore}>
-                  <Link style={{ style: 'none' }} className={styles.link} to={node.fields.slug}>
-                    <BlogBtn>READ MORE</BlogBtn>
+              <Fragment key={node.id}>
+                {node.frontmatter.cover && (
+                  <div style={{ width: '100%', height: 'auto' }}>
+                    <Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+                  </div>
+                )}
+                <div className={styles.content}>
+                  <Link to={node.fields.slug}>
+                    <h1>{node.frontmatter.title}</h1>
                   </Link>
+                  <PostMeta post={node.frontmatter} author={node.fields.author} />
+                  <p>{node.excerpt}</p>
+                  <div className={styles.readMore}>
+                    <Link style={{ style: 'none' }} className={styles.link} to={node.fields.slug}>
+                      <BlogBtn>READ MORE</BlogBtn>
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </Fragment>
             ))}
             <div className={styles.pagination}>
               <div style={{ marginBottom: 10 }}>
@@ -128,6 +130,13 @@ export const blogListQuery = graphql`
             title
             date
             category
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

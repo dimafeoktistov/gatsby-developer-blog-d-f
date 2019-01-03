@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import PostMeta from '../components/PostMeta/PostMeta';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
@@ -16,6 +17,7 @@ import './b16-tomorrow-dark.css';
 export default class PostTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
+    console.log(this.props);
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
     const { frontmatter: post, fields } = postNode;
@@ -34,6 +36,11 @@ export default class PostTemplate extends React.Component {
         <div style={{ marginTop: '60px' }} />
         <div className={styles.indexContainer}>
           <Container>
+            {post.cover && (
+              <div style={{ width: '100%', height: 'auto' }}>
+                <Img fluid={post.cover.childImageSharp.fluid} />
+              </div>
+            )}
             <div className={styles.content}>
               <h1>{post.title}</h1>
               <PostMeta post={post} author={fields.author} />
@@ -62,20 +69,27 @@ export const pageQuery = graphql`
       frontmatter {
         author
         title
-        cover
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         date
         category
         tags
       }
       fields {
         author
-        nextTitle
-        nextSlug
-        prevTitle
-        prevSlug
         slug
         date
       }
     }
   }
 `;
+
+// nextTitle
+// nextSlug
+// prevTitle
+// prevSlug

@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import Container from '../components/Container';
 import PostListing from '../components/PostListing/PostListing';
 import config from '../../data/SiteConfig';
 
@@ -12,16 +13,18 @@ export default class CategoryTemplate extends React.Component {
     const postEdges = data.allMarkdownRemark.edges;
     return (
       <Layout>
-        <div className="category-container">
+        <div className="category-container" style={{ backgroundColor: '#f2f2f2' }}>
           <Helmet title={`Posts in category "${category}" | ${config.siteTitle}`} />
-          <PostListing postEdges={postEdges} />
+          <div style={{ marginTop: '60px' }} />
+          <Container>
+            <PostListing postEdges={postEdges} />
+          </Container>
         </div>
       </Layout>
     );
   }
 }
 
-/* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query CategoryPage($category: String) {
     allMarkdownRemark(
@@ -41,8 +44,14 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             tags
-            cover
             date
             category
           }

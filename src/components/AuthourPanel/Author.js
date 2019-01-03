@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import styles from './Author.module.scss';
-import avatar from '../../../static/photos/1.jpg';
+// import avatar from '../../../static/photos/1.jpg';
 import Social from '../SocialNetworks/SocialNetworks';
 
-const Author = ({ cv }) => {
+const Author = ({ cv, avatar }) => {
   const mLeft = {
     marginLeft: 10,
   };
@@ -12,7 +13,7 @@ const Author = ({ cv }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
-        <img src={avatar} alt="website authour avatar" />
+        <Img fluid={avatar.childImageSharp.fluid} />
       </div>
       <div className={styles.description}>
         <h1>Feoktistov Dmitriy</h1>

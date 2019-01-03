@@ -7,6 +7,7 @@
   padding: 0 20px;
   background-color: #fff;
   border: 1px solid #dadada;
+  margin-bottom: 10px;
   & h1 {
     color: #444;
     font-weight: 700;
@@ -15,7 +16,7 @@
     }
   }
   @media ($screenSmall) {
-    padding: 45px 50px;
+    padding: 5px 50px;
   }
 }
 
@@ -34,6 +35,7 @@
 .readMore {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .pagination {

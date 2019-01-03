@@ -15,6 +15,8 @@ import {
   GooglePlusIcon,
   LinkedinIcon,
   RedditIcon,
+  VKShareButton,
+  VKIcon,
 } from 'react-share';
 import urljoin from 'url-join';
 import config from '../../../data/SiteConfig';
@@ -30,7 +32,7 @@ class SocialLinks extends Component {
     const renderShareCount = count => <div className={styles.socialCount}>{filter(count)}</div>;
 
     return (
-      <div className={styles.socialLinks} >
+      <div className={styles.socialLinks}>
         <RedditShareButton url={url} title={post.title}>
           <RedditIcon round size={iconSize} />
           <RedditShareCount url={url}>{count => renderShareCount(count)}</RedditShareCount>
@@ -52,6 +54,18 @@ class SocialLinks extends Component {
         <TelegramShareButton url={url}>
           <TelegramIcon round size={iconSize} />
         </TelegramShareButton>
+        <VKShareButton
+          url={url}
+          title={post.title}
+          description="test"
+          image={
+            postNode.frontmatter.cover
+              ? `http://localhost:8000${postNode.frontmatter.cover.childImageSharp.fluid.src}`
+              : null
+          }
+        >
+          <VKIcon round size={iconSize} />
+        </VKShareButton>
       </div>
     );
   }
