@@ -17,7 +17,6 @@ import './b16-tomorrow-dark.css';
 export default class PostTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
-    console.log(this.props);
     const { slug } = pageContext;
     const postNode = data.markdownRemark;
     const { frontmatter: post, fields } = postNode;
@@ -88,8 +87,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-// nextTitle
-// nextSlug
-// prevTitle
-// prevSlug
