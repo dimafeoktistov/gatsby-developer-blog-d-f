@@ -4,7 +4,7 @@ import styles from './Author.module.scss';
 import avatar from '../../../static/photos/1.jpg';
 import Social from '../SocialNetworks/SocialNetworks';
 
-const Author = () => {
+const Author = ({ cv }) => {
   const mLeft = {
     marginLeft: 10,
   };
@@ -24,7 +24,13 @@ const Author = () => {
           {' '}
           <Link to="blog">blog</Link>
           {' '}
-          and my social networks to learn more!
+and my social networks to learn more!
+        </p>
+        <p>
+          Also check out my
+          {' '}
+          <a href={cv}>cv</a>
+!
         </p>
         <Social style={mLeft} />
       </div>

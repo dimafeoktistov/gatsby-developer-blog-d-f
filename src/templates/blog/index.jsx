@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, navigateTo } from 'gatsby';
 import PostMeta from '../../components/PostMeta/PostMeta';
 import Container from '../../components/Container';
 import Layout from '../../components/Layout';
@@ -26,10 +26,10 @@ class Index extends React.Component {
     });
   };
 
-  handlePageRedirect = () => {
-    const { history } = this.props;
+  handlePageRedirect = (event) => {
+    event.preventDefault();
     const { selectedPage } = this.state;
-    history.push(`/blog/${selectedPage == 1 ? '' : selectedPage}`);
+    // navigateTo(`/blog/${selectedPage == 1 ? '' : selectedPage}`);
   };
 
   render() {
@@ -88,15 +88,15 @@ class Index extends React.Component {
                     value={selectedPage}
                     onChange={this.handlePageSelect}
                   />
-                  {/* <Link
+                  <Link
                     to={`/blog/${selectedPage == 1 ? '' : selectedPage}`}
                     className={styles.link}
                     rel="next"
-                  > */}
-                    <BlogBtn type="submit" disabled={isInRange} onSubmit={this.handlePageRedirect}>
+                  >
+                    <BlogBtn type="submit" disabled={isInRange}>
                       Go
                     </BlogBtn>
-                  {/* </Link> */}
+                  </Link>
                 </form>
               </div>
             </div>

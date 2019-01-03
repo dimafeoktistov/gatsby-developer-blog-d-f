@@ -12,6 +12,7 @@
   transform: scaleY(1);
   transition: transform 0.3s ease-out;
   width: 100%;
+  z-index: 2;
 }
 
 .title {

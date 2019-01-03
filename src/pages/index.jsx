@@ -9,12 +9,14 @@ import Projects from '../components/Projects/Projects';
 
 class Index extends React.Component {
   render() {
-    console.log(this.props.allFile);
+    const { data: { allFile: { edges }}} = this.props;
+    const publicURL = edges[0].node.publicURL;
+    console.log(publicURL);
     return (
       <Layout>
         <Helmet title={config.siteTitle} />
         <main>
-          <Hero />
+          <Hero cv={publicURL} />
           <Container>
             <Projects />
           </Container>
