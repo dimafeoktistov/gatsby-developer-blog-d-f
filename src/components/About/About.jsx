@@ -42,7 +42,7 @@ are:
             <li>TypeScript</li>
             <li>Front-end frameworks (ReactJS, Vue.js)</li>
             <li>React-Native</li>
-            <li>GraphQL</li>
+            <li>REST API, GraphQL</li>
             <li>Backend frameworks: Express, NestJS</li>
           </ul>
         </div>
