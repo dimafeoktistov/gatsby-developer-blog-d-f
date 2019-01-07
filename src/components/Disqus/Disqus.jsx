@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDisqusComments from 'react-disqus-comments';
-import { DiscussionEmbed } from 'disqus-react';
+// import { DiscussionEmbed } from 'disqus-react';
 import urljoin from 'url-join';
 import config from '../../../data/SiteConfig';
 
@@ -33,13 +33,13 @@ class Disqus extends Component {
     const post = postNode.frontmatter;
     const url = urljoin(config.siteUrl, config.pathPrefix, postNode.fields.slug);
     return (
-      <DiscussionEmbed
+      <ReactDisqusComments
         shortname="dima-feoktistov-1"
-        config={{
-          url,
-          identifier: post.title,
-          title: post.title,
-        }}
+        identifier={post.title}
+        title={post.title}
+        url={url}
+        category_id={post.category_id}
+        onNewComment={this.notifyAboutComment}
       />
     );
   }
@@ -47,11 +47,15 @@ class Disqus extends Component {
 
 export default Disqus;
 
-/* <ReactDisqusComments
-  shortname={config.disqusShortname}
-  identifier={post.title}
-  title={post.title}
-  url={url}
-  category_id={post.category_id}
+
+
+
+/* <DiscussionEmbed
+  shortname="dima-feoktistov-1"
+  config={{
+    url,
+    identifier: post.title,
+    title: post.title,
+  }}
   onNewComment={this.notifyAboutComment}
 /> */
