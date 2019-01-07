@@ -8,7 +8,7 @@ module.exports = {
   siteDescription: 'A personal website about web development and biology.', // Website description used for RSS feeds/meta description tag.
   siteRss: '/rss.xml', // Path to the RSS file.
   siteFBAppID: '', // FB Application ID for using app insights
-  googleAnalyticsID: '', // GA tracking ID.
+  googleAnalyticsID: 'UA-131846305-1', // GA tracking ID.
   disqusShortname: 'dima-feoktistov-1', // Disqus shortname.
   postDefaultCategoryID: 'Tech', // Default category for posts.
   dateFromFormat: 'DD/MM/YYYY', // Date format used in the frontmatter.
