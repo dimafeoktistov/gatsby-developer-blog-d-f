@@ -2,8 +2,8 @@ module.exports = {
   siteTitle: 'Dima Feoktistov Personal Site', // Site title.
   siteTitleShort: 'DF Site', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'Site of Dima Feoktistov', // Alternative site title for SEO.
-  siteLogo: '/logos/logo-1024.png', // Logo used for SEO and manifest.
-  siteUrl: 'http://localhost:8000', // Domain of your website without pathPrefix.
+  siteLogo: '/static/logos/logo-1024.png', // Logo used for SEO and manifest.
+  siteUrl: 'https://www.dimafeoktistov.com', // Domain of your website without pathPrefix.
   pathPrefix: '', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription: 'A personal website about web development and biology.', // Website description used for RSS feeds/meta description tag.
   siteRss: '/rss.xml', // Path to the RSS file.
