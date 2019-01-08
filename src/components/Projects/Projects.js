@@ -15,7 +15,6 @@ const Projects = ({ images }) => (
         <div style={{ width: '100%', height: 'auto' }}>
           <Img fluid={images.tomskMap.childImageSharp.fluid} />
         </div>
-        {/* <img src={guideToTomskPng} alt="guide to Tomsk city" /> */}
         <div className={styles.description}>
           <h3>Guide to Tomsk city</h3>
           <p>
@@ -31,7 +30,7 @@ const Projects = ({ images }) => (
             >
               Go!
             </a>
-            <Link to="page-2" className={styles.projectBtn}>
+            <Link to="blog/tomsk-map" className={styles.projectBtn}>
               More info
             </Link>
           </p>
@@ -41,7 +40,6 @@ const Projects = ({ images }) => (
         <div style={{ width: '100%', height: 'auto' }}>
           <Img fluid={images.loan.childImageSharp.fluid} />
         </div>
-        {/* <img src={loanCalculator} alt="screenshot of loan calculator project" /> */}
         <h3>Loan calculator</h3>
         <p>Calculator of loan percentages. Vanilla javascript and Bootstrap.</p>
         <p>
@@ -59,7 +57,6 @@ const Projects = ({ images }) => (
         <div style={{ width: '100%', height: 'auto' }}>
           <Img fluid={images.arcade.childImageSharp.fluid} />
         </div>
-        {/* <img src={arcadeGameClone} alt="clone of classic arcade game" /> */}
         <h3>Clone of classic arcade game</h3>
         <p>Made on canvas, Vanilla javascript, Bootstrap.</p>
         <p>

@@ -137,7 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
         const datesSet = new Set();
 
         const posts = result.data.allMarkdownRemark.edges;
-        const postsPerPage = 2;
+        const postsPerPage = 4;
         const numPages = Math.ceil(posts.length / postsPerPage);
         Array.from({ length: numPages }).forEach((k, i) => {
           createPage({
