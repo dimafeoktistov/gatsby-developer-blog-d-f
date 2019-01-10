@@ -1,17 +1,22 @@
-@import '../../../utils/scss_variables/media';
+@import "../../../utils/scss_variables/media";
 .navlink {
-    padding: 25px;
-    border: green 1px solid;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  border: green 1px solid;
+  color: black;
+  height: 100%;
+  @media ($screenSmall) {
+    border: none;
+    border-bottom: 3px #fff solid;
     color: black;
-    height: 100%;
-    @media ($screenSmall) {
-        border: none;
-        border-bottom: 3px #fff solid;
-        color: black;
-        padding: 10px 15px;
-        &:hover {
-            background-color: rgb(238, 125, 125);
-            border-bottom: 3px blue solid;
-        }
+    padding: 10px 15px;
+    &:hover {
+      background-color: rgb(238, 125, 125);
+      border-bottom: 3px blue solid;
     }
+  }
+  > svg {
+    margin-right: 5px;
+  }
 }
