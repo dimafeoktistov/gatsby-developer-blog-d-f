@@ -9,15 +9,15 @@ const Navlinks = ({ clicked }) => (
       <FaHome />
       Home
     </Navlink>
-    <Navlink to="/about" clicked={clicked}>
+    <Navlink to="/about/" clicked={clicked}>
       <FaUser />
       About
     </Navlink>
-    <Navlink to="/hire-me" clicked={clicked}>
+    <Navlink to="/hire-me/" clicked={clicked}>
       <FaEnvelope />
       Hire me
     </Navlink>
-    <Navlink to="/blog">
+    <Navlink to="/blog/">
       <FaBook />
       Blog
     </Navlink>

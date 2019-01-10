@@ -67,13 +67,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (Object.prototype.hasOwnProperty.call(node, 'frontmatter')) {
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) slug = `/${_.kebabCase(node.frontmatter.slug)}`;
       if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'date')) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
+        const date = moment(node.frontmatter.date, 'DD MM YYYY');
         if (!date.isValid) console.warn('WARNING: Invalid date.', node.frontmatter);
 
         createNodeField({
           node,
           name: 'date',
-          value: date.toLocaleString(),
+          value: date.unix(),
         });
       }
     }
@@ -111,7 +111,7 @@ exports.createPages = ({ graphql, actions }) => {
             allMarkdownRemark {
               edges {
                 node {
-                  excerpt(pruneLength: 5000)
+                  excerpt
                   frontmatter {
                     author
                     tags
