@@ -13,7 +13,6 @@ class Layout extends Component {
   };
 
   state = {
-    isFloat: false,
     showSideDrawer: false,
   };
 
@@ -27,13 +26,13 @@ class Layout extends Component {
 
   render() {
     const { children } = this.props;
-    const { isFloat, showSideDrawer } = this.state;
+    const { showSideDrawer } = this.state;
     return (
       <Fragment>
         <Helmet>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
-        <Header floating={isFloat} drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <Header drawerToggleClicked={this.sideDrawerToggleHandler} />
         <SideBar open={showSideDrawer} closed={this.sideDrawerClosedHandler} />
         {children}
         <Footer />

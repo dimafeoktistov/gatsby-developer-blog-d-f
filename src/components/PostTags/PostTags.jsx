@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
-import { Link } from 'gatsby';
-import styles from './posttags.module.scss';
 import Tag from '../Tag';
 
 class PostTags extends Component {
