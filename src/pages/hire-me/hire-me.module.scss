@@ -86,7 +86,8 @@ button.outline {
 }
 
 .form {
-  width: 600px;
+  max-width: 600px;
+  width: 90%;
   background-color: #fff;
   border: 2px solid black;
   border-radius: 10px;

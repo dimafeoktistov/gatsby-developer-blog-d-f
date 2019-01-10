@@ -20,7 +20,7 @@ class HireMe extends React.Component {
       .string()
       .min(3, '*Your name is probably longer then that!')
       .max(30)
-      .required('*This field is required!'),
+      .required('*Full name is required!'),
     email: yup
       .string()
       .email('*Invalid e-mail adress!')
@@ -38,6 +38,12 @@ class HireMe extends React.Component {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+  }
+
+  componentWillUnmount() {
+    const scripts = Array.from(document.getElementsByTagName('script'));
+    const script = scripts.filter(el => el.src === 'https://www.google.com/recaptcha/api.js')[0];
+    document.body.removeChild(script);
   }
 
   showMessage = () => {};
@@ -130,7 +136,7 @@ class HireMe extends React.Component {
                       }}
                     />
                     <ErrorMessage name="recaptcha" className={styles.error} component="div" />
-                    
+
                     {status && status.msg && <div>{status.msg}</div>}
 
                     <div style={{ display: 'flex' }}>
